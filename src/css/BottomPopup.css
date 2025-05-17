@@ -1,0 +1,151 @@
+.bottom-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 15vh;
+    max-height: 50vh;
+    height: auto;
+    background: #121212;
+    color: white;
+    padding: 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.popup-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.popup-flag {
+    width: 24px;
+    height: 18px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.popup-separator {
+    height: 1px;
+    background: #333;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.popup-header button {
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-body {
+    margin-top: 16px;
+    overflow-y: auto;
+    flex: 1; /* <-- make it take all remaining space */
+}
+
+.instagram-link {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #e1306c;
+}
+
+.youtube-thumbnails img {
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border-radius: 8px;
+}
+
+.youtube-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.youtube-thumbnails a img {
+    border-radius: 6px;
+    height: auto;
+}
+
+.mode-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.mode-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    color: white;
+}
+
+.slider-icon.youtube {
+    background-color: #FF0000; /* YouTube red */
+}
+
+.slider-icon.tv {
+    background-color: #3f3f3f; /* Neutral/dark for TV */
+}
+
+.popup-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+}

@@ -5,6 +5,7 @@ import BottomPopup from './BottomPopup';
 import './css/VisitedGlobe.css';
 import countries from 'i18n-iso-countries';
 import enLocale from 'i18n-iso-countries/langs/en.json';
+import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
 countries.registerLocale(enLocale);
 
@@ -13,6 +14,25 @@ function VisitedGlobe() {
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [playOnTV, setPlayOnTV] = useState(true);
     const globeRef = useRef();
+
+    const getInitialDarkMode = () => {
+        const now = new Date();
+        const osloHour = new Intl.DateTimeFormat('en-US', {
+            hour: 'numeric',
+            hour12: false,
+            timeZone: 'Europe/Oslo'
+        }).format(now);
+        const hour = parseInt(osloHour, 10);
+        return hour < 7 || hour >= 19; // dark mode before 7 and after 19
+    };
+
+    //const [isDarkMode, setIsDarkMode] = useState(true); //In case you want manualy change between dark and light mode
+    const [isDarkMode, setIsDarkMode] = useState(getInitialDarkMode());
+    const toggleDarkMode = () => setIsDarkMode(prev => !prev);
+
+    useEffect(() => {
+        document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    }, [isDarkMode]);
 
     useEffect(() => {
         Promise.all([
@@ -49,10 +69,23 @@ function VisitedGlobe() {
 
     return (
         <div style={{ height: '100vh', width: '100%' }}>
+            <div style={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                zIndex: 2000,
+                cursor: 'pointer',
+                fontSize: '24px'
+            }} onClick={toggleDarkMode}>
+                {isDarkMode ? <MdDarkMode color="white" /> : <MdLightMode color="black" />}
+            </div>
+
             <Globe
                 ref={globeRef}
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-                backgroundColor="black"
+                globeImageUrl={isDarkMode
+                    ? '//unpkg.com/three-globe/example/img/earth-night.jpg'
+                    : '//unpkg.com/three-globe/example/img/earth-blue-marble.jpg'}
+                backgroundColor={isDarkMode ? 'black' : '#87CEEB'}
 
                 // COUNTRY POLYGONS
                 polygonsData={countryFeatures}
@@ -60,6 +93,7 @@ function VisitedGlobe() {
                 polygonSideColor={() => 'rgba(0, 0, 0, 0.05)'}
                 polygonStrokeColor={() => '#111'}
                 polygonsTransitionDuration={300}
+                polygonAltitude={() => 0.005}
 
                 htmlElementsData={countryFeatures.filter(d => d.properties.visitCount > 0)}
                 htmlLat={d => d.properties.lat}
@@ -96,6 +130,7 @@ function VisitedGlobe() {
                     playOnTV={playOnTV}
                     onTogglePlayMode={() => setPlayOnTV(prev => !prev)}
                     onClose={() => setSelectedCountry(null)}
+                    darkMode={isDarkMode}
                 />
             )}
 

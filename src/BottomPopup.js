@@ -27,7 +27,7 @@ const castYouTubeVideo = async (youtubeUrl) => {
         }
 
         const payload = {
-            entity_id: `media_player.${process.env.HA_CAST_DEVICE}`,
+            entity_id: `media_player.${process.env.REACT_APP_HA_CAST_DEVICE}`,
             media_content_id: JSON.stringify({
                 app_name: "youtube",
                 media_id: videoId
@@ -35,29 +35,29 @@ const castYouTubeVideo = async (youtubeUrl) => {
             media_content_type: "cast"
         };
 
-        console.log("📤 Sending payload:", JSON.stringify(payload, null, 2));
+        console.log("Sending payload:", JSON.stringify(payload, null, 2));
 
-        const res = await fetch(`${process.env.HA_URL}/api/services/media_player/play_media`, {
+        const res = await fetch(`${process.env.REACT_APP_HA_URL}/api/services/media_player/play_media`, {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${process.env.HA_TOKEN}`,
+                Authorization: `Bearer ${process.env.REACT_APP_HA_TOKEN}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(payload)
         });
 
         const result = await res.text();
-        console.log("✅ Home Assistant response:", result);
+        console.log("Home Assistant response:", result);
     } catch (err) {
         console.error("❌ Failed to cast video:", err);
     }
 };
 
-function BottomPopup({ country, onClose, playOnTV, onTogglePlayMode }) {
+function BottomPopup({ country, onClose, playOnTV, onTogglePlayMode, darkMode }) {
     const iso2 = countries.alpha3ToAlpha2(country.code || '');
 
     return (
-        <div className="bottom-popup">
+        <div className={`bottom-popup ${darkMode ? 'dark' : 'light'}`}>
             <div className="popup-header">
                 <div className="popup-title">
                     <span className="popup-flag">{iso2 ? isoToEmojiFlag(iso2) : '🌍'}</span>

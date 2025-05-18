@@ -13,7 +13,7 @@ function AdminPanel() {
         fetch('/data/countries.json')
             .then(res => res.text())
             .then(text => {
-                console.log("📄 Raw response:", text);
+                console.log("Raw response:", text);
                 const data = JSON.parse(text);
                 setVisitData(data);
             })

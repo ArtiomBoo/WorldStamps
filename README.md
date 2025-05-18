@@ -1,5 +1,7 @@
 # Travel Globe + Smart Home Integration
 
+![Globe Preview](http://artiom.no/images/projects/WorldStamps/globe_pc.png)
+
 This was a one-day project where I decided to combine several of my favorite hobbies into a single project. I love to travel and capture everything I see — both through my FPV drone and camera. After each trip, I usually make a video to share with others. I'm also passionate about home automation. So, in this project, I brought all of these together.
 
 ## The Idea
@@ -15,6 +17,8 @@ All links are easily configurable via the `countries.json` file.
 - Home Assistant integration to **cast YouTube videos directly to a TV**
 - Toggle between opening YouTube in browser or casting to TV
 - Designed to run smoothly even on a Raspberry Pi
+
+![InfoScreen Preview](http://artiom.no/images/projects/WorldStamps/globe_mobile.png)
 
 ## 🛠️ Technologies Used
 - React

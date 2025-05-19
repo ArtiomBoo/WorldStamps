@@ -6,6 +6,7 @@ This was a one-day project where I decided to combine several of my favorite hob
 
 ## Demo
 **[https://worldstamps-demo.artiom.no](https://worldstamps-demo.artiom.no)**
+
 ⚠️ Note: Casting to TV is disabled in demo mode. Switch to YouTube mode to open videos in your browser.
 
 ## The Idea

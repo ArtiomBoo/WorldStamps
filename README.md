@@ -4,6 +4,10 @@
 
 This was a one-day project where I decided to combine several of my favorite hobbies into a single project. I love to travel and capture everything I see — both through my FPV drone and camera. After each trip, I usually make a video to share with others. I'm also passionate about home automation. So, in this project, I brought all of these together.
 
+## Demo
+**[https://worldstamps-demo.artiom.no](https://worldstamps-demo.artiom.no)**
+⚠️ Note: Casting to TV is disabled in demo mode. Switch to YouTube mode to open videos in your browser.
+
 ## The Idea
 
 The goal was to create a local, self-hosted interactive "travel checklist" in the form of a 3D globe. When someone opens the webpage (or in my case, scans an NFC tag), they see a spinning Earth showing all the countries I've visited and how many times. Clicking a country opens a popup with links to my Instagram story highlight and YouTube videos from that location.
